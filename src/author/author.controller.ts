@@ -1,5 +1,7 @@
 import {
   Body,
+  CacheInterceptor,
+  CacheTTL,
   Controller,
   Delete,
   Get,
@@ -9,6 +11,7 @@ import {
   Post,
   Put,
   UseGuards,
+  UseInterceptors,
 } from '@nestjs/common';
 import { ApiBearerAuth, ApiResponse, ApiTags } from '@nestjs/swagger';
 import { AuthGuard } from '@nestjs/passport';
@@ -30,6 +33,8 @@ export class AuthorController {
   @ApiBearerAuth()
   @Get(':id')
   @UseGuards(AuthGuard())
+  @UseInterceptors(CacheInterceptor)
+  @CacheTTL(30)
   @HttpCode(HttpStatus.OK)
   async getAuthor(@Param('id') id: string): Promise<AuthorDto> {
     return this.authorService.getAuthorById(id);
@@ -41,6 +46,8 @@ export class AuthorController {
   @ApiBearerAuth()
   @Get()
   @UseGuards(AuthGuard())
+  @UseInterceptors(CacheInterceptor)
+  @CacheTTL(30)
   @HttpCode(HttpStatus.OK)
   async getAuthors(): Promise<AuthorDto[]> {
     return this.authorService.getAuthors();

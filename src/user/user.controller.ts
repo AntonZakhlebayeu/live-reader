@@ -1,5 +1,7 @@
 import {
   Body,
+  CacheInterceptor,
+  CacheTTL,
   Controller,
   Delete,
   Get,
@@ -9,6 +11,7 @@ import {
   Put,
   Req,
   UseGuards,
+  UseInterceptors,
 } from '@nestjs/common';
 import { AuthGuard } from '@nestjs/passport';
 import { UserDto } from './dto/user.dto';
@@ -29,6 +32,8 @@ export class UserController {
   @Get(':id')
   @UseGuards(AuthGuard())
   @ApiBearerAuth()
+  @UseInterceptors(CacheInterceptor)
+  @CacheTTL(30)
   @HttpCode(HttpStatus.OK)
   async getUser(@Param('id') id: string): Promise<UserDto> {
     return this.userService.getUserById(id);
@@ -40,6 +45,8 @@ export class UserController {
   @Get()
   @ApiBearerAuth()
   @UseGuards(AuthGuard())
+  @UseInterceptors(CacheInterceptor)
+  @CacheTTL(30)
   @HttpCode(HttpStatus.OK)
   async getUsers(): Promise<UserDto[]> {
     return this.userService.getUsers();

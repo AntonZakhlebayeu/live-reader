@@ -7,16 +7,17 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 import { User } from './user/entity/user.entity';
 import { AuthModule } from './auth/auth.module';
 import { AuthorModule } from './author/author.module';
-import { BookController } from './book/book.controller';
 import { BookModule } from './book/book.module';
 import { Author } from './author/entity/author.entity';
 import { Book } from './book/entity/book.entity';
+import * as redisStore from 'cache-manager-redis-store';
 
 @Module({
   imports: [
     ConfigModule.forRoot({ isGlobal: true }),
     CacheModule.register({
       isGlobal: true,
+      store: redisStore,
       host: process.env.REDIS_HOST,
       port: process.env.REDIS_PORT,
     }),
