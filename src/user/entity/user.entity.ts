@@ -54,6 +54,7 @@ export class User {
   email: string;
 
   @BeforeInsert() async hashPassword() {
+    console.log('hashPassword: ' + this.passwordHash);
     this.passwordHash = await bcrypt.hash(this.passwordHash, 10);
     this.registerDate = new Date();
     this.lastLoginDate = new Date();

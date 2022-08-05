@@ -27,7 +27,7 @@ import { UserController } from '../user/user.controller';
       inject: [ConfigService],
     }),
   ],
-  controllers: [AuthController, UserController],
+  controllers: [AuthController],
   providers: [AuthService, JwtStrategy],
   exports: [PassportModule, JwtModule],
 })
