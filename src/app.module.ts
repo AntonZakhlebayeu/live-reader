@@ -40,7 +40,7 @@ import { Book } from './book/entity/book.entity';
     AuthorModule,
     BookModule,
   ],
-  controllers: [AppController, BookController],
+  controllers: [AppController],
   providers: [AppService],
 })
 export class AppModule {}

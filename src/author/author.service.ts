@@ -43,7 +43,6 @@ export class AuthorService {
 
   async getAuthorById(id: string): Promise<AuthorDto> {
     const author: Author = await this.authorRepo.findOne({ where: { id } });
-
     return toAuthorDto(author);
   }
 
@@ -82,7 +81,7 @@ export class AuthorService {
 
     return {
       success: true,
-      message: 'User updated successfully',
+      message: 'Author updated successfully',
     };
   }
 
@@ -96,7 +95,7 @@ export class AuthorService {
 
     return {
       success: true,
-      message: 'User deleted',
+      message: 'Author deleted',
     };
   }
 }

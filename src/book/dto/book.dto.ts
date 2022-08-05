@@ -1,29 +1,33 @@
 import { IsNotEmpty } from 'class-validator';
 import { ApiModelProperty } from '@nestjs/swagger/dist/decorators/api-model-property.decorator';
-import { Book } from '../../book/entity/book.entity';
+import { AuthorDto } from '../../author/dto/author.dto';
 
-export class AuthorDto {
+export class BookDto {
   @IsNotEmpty()
   @ApiModelProperty()
   id: string;
 
   @IsNotEmpty()
   @ApiModelProperty()
-  firstName: string;
+  title: string;
 
   @IsNotEmpty()
   @ApiModelProperty()
-  lastName: string;
+  description: string;
 
   @IsNotEmpty()
-  @ApiModelProperty({ type: 'integer' })
-  age: 'integer';
+  @ApiModelProperty()
+  category: string;
 
   @IsNotEmpty()
-  @ApiModelProperty({ type: 'timestamp' })
+  @ApiModelProperty()
+  mark: number;
+
+  @IsNotEmpty()
+  @ApiModelProperty({ type: AuthorDto })
+  author: AuthorDto;
+
+  @IsNotEmpty()
+  @ApiModelProperty()
   createdAt: Date;
-
-  @IsNotEmpty()
-  @ApiModelProperty({ type: Book })
-  books: Book[];
 }

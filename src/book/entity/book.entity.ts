@@ -4,6 +4,7 @@ import {
   PrimaryGeneratedColumn,
   BeforeInsert,
   ManyToOne,
+  JoinColumn,
 } from 'typeorm';
 import { Author } from '../../author/entity/author.entity';
 
@@ -41,7 +42,8 @@ export class Book {
   })
   createdAt: Date;
 
-  @ManyToOne(() => Author, (author) => author.books)
+  @ManyToOne(() => Author, (author) => author.books, { eager: false })
+  @JoinColumn([{ name: 'author', referencedColumnName: 'id' }])
   author: Author;
 
   @BeforeInsert() async addDate() {
