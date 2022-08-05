@@ -7,9 +7,9 @@ import {
   Post,
 } from '@nestjs/common';
 import { CreateUserDto } from '../user/dto/create-user.dto';
-import { RegistrationStatus } from './interfaces/registration-status.interface';
+import { RegistrationStatus } from './responses/registration-status.response';
 import { LoginUserDto } from '../user/dto/login-user.dto';
-import { LoginStatus } from './interfaces/login-status.interface';
+import { LoginStatus } from './responses/login-status.response';
 import { AuthService } from './auth.service';
 import { ApiResponse, ApiTags } from '@nestjs/swagger';
 
@@ -29,7 +29,6 @@ export class AuthController {
     const result: RegistrationStatus = await this.authService.register(
       createUserDto,
     );
-    console.log(result);
     if (!result.success) {
       throw new HttpException(result.message, HttpStatus.BAD_REQUEST);
     }

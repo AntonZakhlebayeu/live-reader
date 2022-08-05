@@ -14,9 +14,9 @@ import { AuthGuard } from '@nestjs/passport';
 import { UserDto } from './dto/user.dto';
 import { UserService } from './user.service';
 import { ApiResponse, ApiTags } from '@nestjs/swagger';
-import { UpdateStatus } from '../auth/interfaces/update-status.interface';
+import { UpdateStatus } from '../auth/responses/update-status.response';
 import { UpdateUserDto } from './dto/update-user.dto';
-import { DeleteStatus } from '../auth/interfaces/delete-status.interface';
+import { DeleteStatus } from '../auth/responses/delete-status.response';
 
 @ApiTags('users')
 @Controller('api/users')

@@ -8,8 +8,8 @@ import { LoginUserDto } from './dto/login-user.dto';
 import { CreateUserDto } from './dto/create-user.dto';
 import { comparePasswords } from './utils';
 import { UpdateUserDto } from './dto/update-user.dto';
-import { UpdateStatus } from '../auth/interfaces/update-status.interface';
-import { DeleteStatus } from '../auth/interfaces/delete-status.interface';
+import { UpdateStatus } from '../auth/responses/update-status.response';
+import { DeleteStatus } from '../auth/responses/delete-status.response';
 
 @Injectable()
 export class UserService {

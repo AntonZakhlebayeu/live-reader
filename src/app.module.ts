@@ -6,11 +6,12 @@ import { UserModule } from './user/user.module';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { User } from './user/entity/user.entity';
 import { AuthModule } from './auth/auth.module';
+import { AuthorModule } from './author/author.module';
+import { BookController } from './book/book.controller';
+import { BookModule } from './book/book.module';
 
 @Module({
   imports: [
-    AuthModule,
-    UserModule,
     ConfigModule.forRoot({ isGlobal: true }),
     CacheModule.register({
       isGlobal: true,
@@ -32,8 +33,12 @@ import { AuthModule } from './auth/auth.module';
       }),
       inject: [ConfigService],
     }),
+    AuthModule,
+    UserModule,
+    AuthorModule,
+    BookModule,
   ],
-  controllers: [AppController],
+  controllers: [AppController, BookController],
   providers: [AppService],
 })
 export class AppModule {}
