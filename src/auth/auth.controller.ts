@@ -20,6 +20,7 @@ export class AuthController {
 
   @ApiResponse({
     type: RegistrationStatus,
+    status: HttpStatus.CREATED,
   })
   @Post('register')
   @HttpCode(HttpStatus.CREATED)

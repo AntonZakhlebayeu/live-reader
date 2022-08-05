@@ -33,6 +33,20 @@ services:
       - '5432:5432'
     volumes:
       - db:/var/lib/postgresql/data
+  client:
+    build:
+      context: ../live-reader-client
+      dockerfile: Dockerfile
+    command: npm run start
+    ports:
+      - '3000:3000'
+    volumes:
+      - /usr/src/app/node_modules
+    restart: unless-stopped
+    depends_on:
+      - redis
+      - db
+      - api
 volumes:
   redis:
     driver: local

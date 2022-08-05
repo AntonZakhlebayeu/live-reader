@@ -28,6 +28,7 @@ export class UserController {
 
   @ApiResponse({
     type: UserDto,
+    status: HttpStatus.OK,
   })
   @Get(':id')
   @UseGuards(AuthGuard())
@@ -41,6 +42,7 @@ export class UserController {
 
   @ApiResponse({
     type: [UserDto],
+    status: HttpStatus.OK,
   })
   @Get()
   @ApiBearerAuth()
@@ -54,6 +56,7 @@ export class UserController {
 
   @ApiResponse({
     type: [UpdateStatus],
+    status: HttpStatus.NO_CONTENT,
   })
   @Put(':id')
   @ApiBearerAuth()
@@ -68,6 +71,7 @@ export class UserController {
 
   @ApiResponse({
     type: [DeleteStatus],
+    status: HttpStatus.NO_CONTENT
   })
   @Delete(':id')
   @ApiBearerAuth()

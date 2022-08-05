@@ -29,6 +29,7 @@ export class AuthorController {
 
   @ApiResponse({
     type: AuthorDto,
+    status: HttpStatus.OK,
   })
   @ApiBearerAuth()
   @Get(':id')
@@ -42,6 +43,7 @@ export class AuthorController {
 
   @ApiResponse({
     type: [AuthorDto],
+    status: HttpStatus.OK,
   })
   @ApiBearerAuth()
   @Get()
@@ -55,6 +57,7 @@ export class AuthorController {
 
   @ApiResponse({
     type: [AuthorDto],
+    status: HttpStatus.CREATED,
   })
   @Post()
   @ApiBearerAuth()
@@ -68,6 +71,7 @@ export class AuthorController {
 
   @ApiResponse({
     type: [UpdateStatus],
+    status: HttpStatus.NO_CONTENT,
   })
   @Put(':id')
   @UseGuards(AuthGuard())
@@ -82,6 +86,7 @@ export class AuthorController {
 
   @ApiResponse({
     type: [DeleteStatus],
+    status: HttpStatus.NO_CONTENT,
   })
   @Delete(':id')
   @ApiBearerAuth()

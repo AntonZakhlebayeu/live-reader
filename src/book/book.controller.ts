@@ -29,6 +29,7 @@ export class BookController {
 
   @ApiResponse({
     type: BookDto,
+    status: HttpStatus.OK,
   })
   @ApiBearerAuth()
   @Get(':id')
@@ -42,6 +43,7 @@ export class BookController {
 
   @ApiResponse({
     type: [BookDto],
+    status: HttpStatus.OK,
   })
   @ApiBearerAuth()
   @Get()
@@ -55,6 +57,7 @@ export class BookController {
 
   @ApiResponse({
     type: [BookDto],
+    status: HttpStatus.CREATED,
   })
   @Post()
   @ApiBearerAuth()
@@ -66,6 +69,7 @@ export class BookController {
 
   @ApiResponse({
     type: [UpdateStatus],
+    status: HttpStatus.NO_CONTENT,
   })
   @Put(':id')
   @UseGuards(AuthGuard())
@@ -80,6 +84,7 @@ export class BookController {
 
   @ApiResponse({
     type: [DeleteStatus],
+    status: HttpStatus.NO_CONTENT,
   })
   @Delete(':id')
   @ApiBearerAuth()
