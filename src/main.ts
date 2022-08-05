@@ -10,6 +10,7 @@ async function bootstrap() {
     .setTitle('Live-Reader')
     .setDescription('The live-reader API description')
     .setVersion(packageJson.version)
+    .addBearerAuth()
     .build();
   const document = SwaggerModule.createDocument(app, config);
   SwaggerModule.setup('/swagger', app, document);

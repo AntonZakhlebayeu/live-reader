@@ -13,7 +13,7 @@ import {
 import { AuthGuard } from '@nestjs/passport';
 import { UserDto } from './dto/user.dto';
 import { UserService } from './user.service';
-import { ApiResponse, ApiTags } from '@nestjs/swagger';
+import { ApiBearerAuth, ApiResponse, ApiTags } from '@nestjs/swagger';
 import { UpdateStatus } from '../auth/responses/update-status.response';
 import { UpdateUserDto } from './dto/update-user.dto';
 import { DeleteStatus } from '../auth/responses/delete-status.response';
@@ -28,6 +28,7 @@ export class UserController {
   })
   @Get(':id')
   @UseGuards(AuthGuard())
+  @ApiBearerAuth()
   @HttpCode(HttpStatus.OK)
   async getUser(@Param('id') id: string): Promise<UserDto> {
     return this.userService.getUserById(id);
@@ -37,6 +38,7 @@ export class UserController {
     type: [UserDto],
   })
   @Get()
+  @ApiBearerAuth()
   @UseGuards(AuthGuard())
   @HttpCode(HttpStatus.OK)
   async getUsers(): Promise<UserDto[]> {
@@ -47,6 +49,7 @@ export class UserController {
     type: [UpdateStatus],
   })
   @Put(':id')
+  @ApiBearerAuth()
   @UseGuards(AuthGuard())
   @HttpCode(HttpStatus.NO_CONTENT)
   async updateUser(
@@ -60,6 +63,7 @@ export class UserController {
     type: [DeleteStatus],
   })
   @Delete(':id')
+  @ApiBearerAuth()
   @UseGuards(AuthGuard())
   @HttpCode(HttpStatus.NO_CONTENT)
   async deleteUser(

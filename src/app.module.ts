@@ -9,6 +9,8 @@ import { AuthModule } from './auth/auth.module';
 import { AuthorModule } from './author/author.module';
 import { BookController } from './book/book.controller';
 import { BookModule } from './book/book.module';
+import { Author } from './author/entity/author.entity';
+import { Book } from './book/entity/book.entity';
 
 @Module({
   imports: [
@@ -29,7 +31,7 @@ import { BookModule } from './book/book.module';
         database: configService.get('POSTGRES_DB'),
         synchronize: true,
         autoLoadEntities: true,
-        entities: [User],
+        entities: [User, Author, Book],
       }),
       inject: [ConfigService],
     }),

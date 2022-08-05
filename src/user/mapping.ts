@@ -1,5 +1,5 @@
-import { User } from './user/entity/user.entity';
-import { UserDto } from './user/dto/user.dto';
+import { User } from './entity/user.entity';
+import { UserDto } from './dto/user.dto';
 
 export const toUserDto = (data: User): UserDto => {
   const {
