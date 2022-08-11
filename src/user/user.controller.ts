@@ -71,7 +71,7 @@ export class UserController {
 
   @ApiResponse({
     type: [DeleteStatus],
-    status: HttpStatus.NO_CONTENT
+    status: HttpStatus.NO_CONTENT,
   })
   @Delete(':id')
   @ApiBearerAuth()

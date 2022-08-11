@@ -1,4 +1,4 @@
-import { HttpException, HttpStatus, Injectable } from '@nestjs/common';
+import { HttpException, HttpStatus, Injectable, Req } from '@nestjs/common';
 import { UserService } from '../user/user.service';
 import { JwtService } from '@nestjs/jwt';
 import { CreateUserDto } from '../user/dto/create-user.dto';
@@ -7,6 +7,8 @@ import { LoginStatus } from './responses/login-status.response';
 import { LoginUserDto } from '../user/dto/login-user.dto';
 import { UserDto } from '../user/dto/user.dto';
 import { JwtPayload } from './interfaces/payload.interface';
+import { toUserDto } from 'src/user/mapping';
+import { User } from 'src/user/entity/user.entity';
 
 @Injectable()
 export class AuthService {
@@ -36,8 +38,15 @@ export class AuthService {
     const token = this._createToken(user);
 
     return {
-      username: user.username,
+      user: user,
       ...token,
+    };
+  }
+
+  async auth(user: User): Promise<any> {
+    return {
+      token: this._createToken(user),
+      user: toUserDto(user),
     };
   }
 

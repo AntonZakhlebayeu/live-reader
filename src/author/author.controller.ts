@@ -31,9 +31,7 @@ export class AuthorController {
     type: AuthorDto,
     status: HttpStatus.OK,
   })
-  @ApiBearerAuth()
   @Get(':id')
-  @UseGuards(AuthGuard())
   @UseInterceptors(CacheInterceptor)
   @CacheTTL(30)
   @HttpCode(HttpStatus.OK)
@@ -45,9 +43,7 @@ export class AuthorController {
     type: [AuthorDto],
     status: HttpStatus.OK,
   })
-  @ApiBearerAuth()
   @Get()
-  @UseGuards(AuthGuard())
   @UseInterceptors(CacheInterceptor)
   @CacheTTL(30)
   @HttpCode(HttpStatus.OK)
