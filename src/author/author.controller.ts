@@ -33,7 +33,7 @@ export class AuthorController {
   })
   @Get(':id')
   @UseInterceptors(CacheInterceptor)
-  @CacheTTL(30)
+  @CacheTTL(5)
   @HttpCode(HttpStatus.OK)
   async getAuthor(@Param('id') id: string): Promise<AuthorDto> {
     return this.authorService.getAuthorById(id);
@@ -45,7 +45,7 @@ export class AuthorController {
   })
   @Get()
   @UseInterceptors(CacheInterceptor)
-  @CacheTTL(30)
+  @CacheTTL(5)
   @HttpCode(HttpStatus.OK)
   async getAuthors(): Promise<AuthorDto[]> {
     return this.authorService.getAuthors();

@@ -33,7 +33,7 @@ export class BookController {
   })
   @Get(':id')
   @UseInterceptors(CacheInterceptor)
-  @CacheTTL(30)
+  @CacheTTL(5)
   @HttpCode(HttpStatus.OK)
   async getBook(@Param('id') id: string): Promise<BookDto> {
     return this.bookService.getBookById(id);
@@ -45,7 +45,7 @@ export class BookController {
   })
   @Get()
   @UseInterceptors(CacheInterceptor)
-  @CacheTTL(30)
+  @CacheTTL(5)
   @HttpCode(HttpStatus.OK)
   async getBooks(): Promise<BookDto[]> {
     return this.bookService.getBooks();
