@@ -42,7 +42,10 @@ export class Book {
   })
   createdAt: Date;
 
-  @ManyToOne(() => Author, (author) => author.books, { eager: false })
+  @ManyToOne(() => Author, (author) => author.books, {
+    eager: false,
+    onDelete: 'CASCADE',
+  })
   @JoinColumn([{ name: 'author', referencedColumnName: 'id' }])
   author: Author;
 
