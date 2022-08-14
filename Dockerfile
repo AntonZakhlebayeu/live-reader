@@ -1,4 +1,5 @@
 FROM node:18-alpine As development
+EXPOSE 8000
 
 WORKDIR /usr/src/app
 
